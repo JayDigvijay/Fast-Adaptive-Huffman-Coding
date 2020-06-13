@@ -13,14 +13,19 @@ from Back_Tree import Code_Back as CB
 from Back_Tree import Insert_Back as IB
 from Back_Tree import Remove_Back as RB
 
-Input = "ACECEFJHDBEH"
+Input = "ACECEF"
+
+for s in Input:
+    if(ord(s) >= 97):
+        s_new = chr(ord(s) - 32)
+        Input = Input.replace(s, s_new)
 
 Special_Codeword = '$'
 Time_Constant = 4
 
 W = Special_Codeword
 T = Time_Constant
-Alphabet_Range = 26
+Alphabet_Range = 8
 
 FT = { }        ## Front Tree, d1
 FTC = { }        ## Front Tree, d2
@@ -31,12 +36,16 @@ for i in range(Alphabet_Range):
     char = chr(num)
 FT[W] = 0
 AF(W, FT, FTC)
+
+
 BT = []
+BTC = []
 char = 'A'
 for i in range(Alphabet_Range):
     BT.append(char)
     num = ord(char) + 1
     char = chr(num)
+
 OS = []         ## Output Symbols
 OC = []         ## Output Code
 Newly_Added = []
@@ -70,8 +79,8 @@ for ch in Input:
     count = count + 1
 
 
-#print(OS)
-#print(OC)
+print(OS)
+print(OC)
 bit_length = 0
 for code in OC:
     bit_length += len(code)
